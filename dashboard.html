@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<! --dashboard page where users can see their saved or stored credentials-->
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+    <h2>Dashboard</h2>
+
+    <h3>Saved Credentials:</h3> <! -- this is the section where users can see their saved credentials -->
+    
+    {% if credentials %} 
+        <table border="1">
+            <tr><th>Site</th><th>Username</th><th>Password</th></tr> <! -- this is the table where users can see their saved credentials-->
+            {% for site, username, password in credentials %}
+            <tr>
+                <td>{{ site }}</td>
+                <td>{{ username }}</td>
+                <td>{{ password }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No credentials saved yet.</p>
+    {% endif %}
+
+    <a href="/add">Add Credential</a> |
+    <a href="/logout">Logout</a>
+</body>
+</html>
